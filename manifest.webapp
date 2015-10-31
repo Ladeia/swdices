@@ -7,9 +7,9 @@
     "128": "/images/app_icon_128.png"
   },
   "version": "0.1",
-  "developer": {
-    "name": "Antonio Ladeia",
-    "url": "http://swdices.antonioladeia.com"
-  },
+  "developer": [
+    {"name": "Antonio Ladeia", "url": "http://antonioladeia.com"},
+    {"name": "Anniel Menezes", "url": "http://annielmenezes.com"}
+  ],
   "default_locale": "pt"
 }
