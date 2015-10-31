@@ -1,0 +1,127 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+button, a[role="button"], .button
+{
+	width: 20px;
+	height: 20px;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 0;
+	border: solid 1px #000;
+}
+
+p
+{
+	margin: 0 0 23px 10px;
+	height: 15px;
+}
+
+#roll{width:90px;}
+#clear{width:90px;}
+#clear_pool{width:90px;}
+
+section[role="region"] > header:first-child
+{
+/*	height:40px;
+	background-color: #000;*/
+}
+section[role="region"] > header:first-child h1
+{
+/*	line-height: 38px;
+	padding-top: 0;
+	font-size:30px;
+	color:yellow;*/
+}
+
+#dados
+{
+	margin-top:-40px;
+}
+
+#dados p
+{
+  margin: 42px 0;
+}
+
+body
+{
+	color:yellow;
+	background: #000 url("../images/bg3.png") no-repeat;
+}
+
+#resultado
+{
+	background-color: #fff;
+	color:#000;
+	margin-left: 10px;
+	width:300px;
+	height:131px;
+	overflow: auto;
+	border: solid 1px #000;
+}
+
+.dices
+{
+	width:75px;
+}
+
+.qtd
+{
+	background-color: #fff;
+	color:#000;
+	font-weight: bold;
+	padding:2px 3px;
+	border: solid 1px #000;
+}
+
+.symbols
+{
+	width:25px;
+}

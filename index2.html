@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/stylesheet2.css">
+
+		<script src="js/main.js" type="text/javascript"></script>
+		<script src="js/dices.js" type="text/javascript"></script>
+
+		<title>Star Wars Dices</title>
+	</head>
+	<body>
+		<section id="dices" role="region">
+			<header>
+		    	<h1>Dados para SW</h1>
+		  	</header>
+		  	<div id="dados">
+					<img src="images/WhiteDice.png" 	class="dices" id="forca"></img>
+					<img src="images/GreenDice.png" 	class="dices" id="habilidade"></img>
+					<img src="images/YellowDice.png" 	class="dices" id="proficiencia"></img>
+					<img src="images/PurpleDice.png"	class="dices" id="dificuldade"></img>
+					<img src="images/RedDice.png" 		class="dices" id="desafio"></img>
+					<img src="images/BlueDice.png" 		class="dices" id="ampliacao"></img>
+					<img src="images/BlackDice.png" 	class="dices" id="contratempo"></img>
+				</div>
+				<button id="roll" class="button">rolar</button>
+				<!--<button id="clear" class="button">limpar</button>-->
+				<button id="clear_pool" class="button">zerar</button>
+				<!-- <div id="resultado"></div> -->
+		</section>
+		<script language="javascript">
+			var pool = new Pool();
+			var forca			= document.getElementById('forca');
+			var habilidade 		= document.getElementById('habilidade');
+			var proficiencia 	= document.getElementById('proficiencia');
+			var dificuldade 	= document.getElementById('dificuldade');
+			var desafio 		= document.getElementById('desafio');
+			var ampliacao 		= document.getElementById('ampliacao');
+			var contratempo 	= document.getElementById('contratempo');
+			var resultado 		= document.getElementById('resultado');
+			var clear 			= document.getElementById('clear');
+			var clear_pool 		= document.getElementById('clear_pool');
+			var roll 			= document.getElementById('roll');
+
+			forca.addEventListener('click', function(){add(dado_forca,"force_qtd");} , false);
+			habilidade.addEventListener('click', function(){add(dado_habilidade, "habilidade_qtd");} , false);
+			proficiencia.addEventListener('click', function(){add(dado_proficiencia, "proficiencia_qtd");} , false);
+			dificuldade.addEventListener('click', function(){add(dado_dificuldade, "dificuldade_qtd");} , false);
+			ampliacao.addEventListener('click', function(){add(dado_ampliacao, "ampliacao_qtd");} , false);
+			contratempo.addEventListener('click', function(){add(dado_contratempo, "contratempo_qtd");} , false);
+			desafio.addEventListener('click', function(){add(dado_desafio, "desafio_qtd");} , false);
+			roll.addEventListener('click', to_roll , false);
+			clear.addEventListener('click', to_clear , false);
+			clear_pool.addEventListener('click', kill_pool , false);
+
+			function remove(dice, element)
+			{
+				pool.remove(dice);
+				var dado = document.getElementById(element);
+				if(dado.innerHTML >0)
+					dado.innerHTML = parseInt(dado.innerHTML)-1;
+			}
+
+			function add(dice, element)
+			{
+				pool.add(dice);
+				var dado = document.getElementById(element);
+				//dado.innerHTML = parseInt(dado.innerHTML)+1;
+				console.log('add dado'+element);
+			}
+
+			function to_roll()
+			{
+				console.log('to roll index');
+				console.log(pool.roll());
+			}
+
+			function to_clear()
+			{
+				resultado.innerHTML = "";
+			}
+
+			function kill_pool()
+			{
+				pool.kill_pool();
+				document.getElementById("force_qtd").innerHTML = "0";
+				document.getElementById("habilidade_qtd").innerHTML = "0";
+				document.getElementById("proficiencia_qtd").innerHTML = "0";
+				document.getElementById("dificuldade_qtd").innerHTML = "0";
+				document.getElementById("ampliacao_qtd").innerHTML = "0";
+				document.getElementById("contratempo_qtd").innerHTML = "0";
+				document.getElementById("desafio_qtd").innerHTML = "0";
+				to_clear();
+			}
+
+		</script>
+	</body>
+</html>

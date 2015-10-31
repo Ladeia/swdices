@@ -1,0 +1,15 @@
+{
+  "name": "SW Dices",
+  "description": "Simulador de dados para o rpg Star Wars Edge of Empire.",
+  "launch_path": "/index.html",
+  "icons": {
+    "60": "/images/app_icon_60.png",
+    "128": "/images/app_icon_128.png"
+  },
+  "version": "0.1",
+  "developer": {
+    "name": "Antonio Ladeia",
+    "url": "http://swdices.antonioladeia.com"
+  },
+  "default_locale": "pt"
+}

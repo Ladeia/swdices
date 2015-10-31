@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<link href="bb/style/buttons.css" rel="stylesheet" type="text/css">
+		<link href="bb/style/headers.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+
+		<script src="js/main.js" type="text/javascript"></script>
+		<script src="js/dices.js" type="text/javascript"></script>
+
+		<title>Star Wars Dices</title>
+	</head>
+	<body>
+		<section id="dices" role="region">
+			<!-- <hea der>-->
+		    <!--	<img src="images/TituloPreto.png" /><br />
+		    	<img src="images/TituloBranco.png" /> -->
+		  	<!-- </header> -->
+		  	<div id="dados">
+			<p><img src="images/WhiteDice.png" class="dices"></img>
+				<button id="forcaMin" class="button">-</button>
+				<button id="forcaMax" class="button">+</button>
+				<span id="force_qtd" class="qtd">0</span>
+			</p>
+
+			<p><img src="images/GreenDice.png" class="dices"></img>
+				<button id="habilidadeMin" class="button">-</button>
+				<button id="habilidadeMax" class="button">+</button>
+				<span id="habilidade_qtd" class="qtd">0</span>
+			</p>
+			<p><img src="images/YellowDice.png" class="dices"></img>
+				<button id="proficienciaMin" class="button">-</button>
+				<button id="proficienciaMax" class="button">+</button>
+				<span id="proficiencia_qtd" class="qtd">0</span>
+			</p>
+			<p><img src="images/PurpleDice.png" class="dices"></img>
+				<button id="dificuldadeMin" class="button">-</button>
+				<button id="dificuldadeMax" class="button">+</button>
+				<span id="dificuldade_qtd" class="qtd">0</span>
+			</p>
+			<p><img src="images/RedDice.png" class="dices"></img>
+				<button id="desafioMin" class="button">-</button>
+				<button id="desafioMax" class="button">+</button>
+				<span id="desafio_qtd" class="qtd">0</span>
+			</p>
+			<p><img src="images/BlueDice.png" class="dices"></img>
+				<button id="ampliacaoMin" class="button">-</button>
+				<button id="ampliacaoMax" class="button">+</button>
+				<span id="ampliacao_qtd" class="qtd">0</span>
+			</p>
+			<p><img src="images/BlackDice.png" class="dices"></img>
+				<button id="contratempoMin" class="button">-</button>
+				<button id="contratempoMax" class="button">+</button>
+				<span id="contratempo_qtd" class="qtd">0</span>
+			</p>
+			</div>
+				<button id="roll" class="button">rolar</button>
+				<button id="clear" class="button">limpar</button>
+				<button id="clear_pool" class="button">zerar</button>
+				<div id="resultado"></div>
+		</section>
+		<script language="javascript">
+			var pool = new Pool();
+			var forcaMin 		= document.getElementById('forcaMin');
+			var forcaMax 		= document.getElementById('forcaMax');
+			var habilidadeMin 	= document.getElementById('habilidadeMin');
+			var habilidadeMax 	= document.getElementById('habilidadeMax');
+			var proficienciaMin = document.getElementById('proficienciaMin');
+			var proficienciaMax = document.getElementById('proficienciaMax');
+			var dificuldadeMin 	= document.getElementById('dificuldadeMin');
+			var dificuldadeMax 	= document.getElementById('dificuldadeMax');
+			var desafioMin 		= document.getElementById('desafioMin');
+			var desafioMax 		= document.getElementById('desafioMax');
+			var ampliacaoMin 	= document.getElementById('ampliacaoMin');
+			var ampliacaoMax 	= document.getElementById('ampliacaoMax');
+			var contratempoMin 	= document.getElementById('contratempoMin');
+			var contratempoMax 	= document.getElementById('contratempoMax');
+			var resultado 	= document.getElementById('resultado');
+			var clear 	= document.getElementById('clear');
+			var clear_pool 	= document.getElementById('clear_pool');
+			var roll = document.getElementById('roll');
+
+			forcaMin.addEventListener('click', function(){remove(force_dice,"force_qtd")} , false);
+			forcaMax.addEventListener('click', function(){add(force_dice,"force_qtd");} , false);
+			habilidadeMin.addEventListener('click', function(){remove(habilidade, "habilidade_qtd");} , false);
+			habilidadeMax.addEventListener('click', function(){add(habilidade, "habilidade_qtd");} , false);
+			proficienciaMin.addEventListener('click', function(){remove(proficiencia, "proficiencia_qtd");} , false);
+			proficienciaMax.addEventListener('click', function(){add(proficiencia, "proficiencia_qtd");} , false);
+			dificuldadeMin.addEventListener('click', function(){remove(dificuldade, "dificuldade_qtd");} , false);
+			dificuldadeMax.addEventListener('click', function(){add(dificuldade, "dificuldade_qtd");} , false);
+			ampliacaoMin.addEventListener('click', function(){remove(ampliacao, "ampliacao_qtd");} , false);
+			ampliacaoMax.addEventListener('click', function(){add(ampliacao, "ampliacao_qtd");} , false);
+			contratempoMin.addEventListener('click', function(){remove(contratempo, "contratempo_qtd");} , false);
+			contratempoMax.addEventListener('click', function(){add(contratempo, "contratempo_qtd");} , false);
+			desafioMin.addEventListener('click', function(){remove(desafio, "desafio_qtd");} , false);
+			desafioMax.addEventListener('click', function(){add(desafio, "desafio_qtd");} , false);
+			roll.addEventListener('click', to_roll , false);
+			clear.addEventListener('click', to_clear , false);
+			clear_pool.addEventListener('click', kill_pool , false);
+
+			function remove(dice, element)
+			{
+				pool.remove(dice);
+				var dado = document.getElementById(element);
+				if(dado.innerHTML >0)
+					dado.innerHTML = parseInt(dado.innerHTML)-1;
+			}
+
+			function add(dice, element)
+			{
+				pool.add(dice);
+				var dado = document.getElementById(element);
+				dado.innerHTML = parseInt(dado.innerHTML)+1;
+			}
+
+			function to_roll()
+			{
+				resultado.innerHTML = pool.roll();
+			}
+
+			function to_clear()
+			{
+				resultado.innerHTML = "";
+			}
+
+			function kill_pool()
+			{
+				pool.kill_pool();
+				document.getElementById("force_qtd").innerHTML = "0";
+				document.getElementById("habilidade_qtd").innerHTML = "0";
+				document.getElementById("proficiencia_qtd").innerHTML = "0";
+				document.getElementById("dificuldade_qtd").innerHTML = "0";
+				document.getElementById("ampliacao_qtd").innerHTML = "0";
+				document.getElementById("contratempo_qtd").innerHTML = "0";
+				document.getElementById("desafio_qtd").innerHTML = "0";
+				to_clear();
+			}
+
+		</script>
+	</body>
+</html>
