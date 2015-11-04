@@ -1,13 +1,22 @@
 <!DOCTYPE HTML>
-<html lang="pt-br">
+<html lang="pt-br" ng-app="diceController">
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
 		<title>Star Wars Dices</title>
 	</head>
-	<body>
-		<section id="dices" role="region">
+	<body ng-controller="main">
+		<section id="home">
+			<ul class="nav nav-pills">
+				<li><a href ng-click="panel.selectTab(1)">Roll</a></li>
+				<li><a href ng-click="panel.selectTab(2)">Configs</a></li>
+				<li><a href ng-click="panel.selectTab(3)">About</a></li>
+			</ul>
+			{{tab}}
+		</section>
+		
+		<section id="dices" role="region" class="panel" ng-show=" tab === 1">
 			<!-- <hea der>-->
 		    <!--	<img src="images/TituloPreto.png" /><br />
 		    	<img src="images/TituloBranco.png" /> -->
@@ -55,6 +64,28 @@
 				<button id="clear_pool" class="button">zerar</button>
 				<div id="resultado"></div>
 		</section>
+
+		<section id="configs" class="panel" ng-show=" tab === 2">
+
+		</section>
+
+		<section id="About" class="panel" ng-show=" tab === 3">
+			<h2>Programers</h2>
+			<ul>
+				<li>Antonio Ladeia</li>
+				<li>Anniel Menezes</li>
+			</ul>
+			<h2>Report a bug</h2>
+
+			<h2>License</h2>
+		</section>
+		
+
+		<script src="http://code.angularjs.org/1.0.1/angular-1.0.1.min.js" type="text/javascript"></script>
+		<script src="/js/main.js" type="text/javascript"></script>
+		<script src="js/dices.js" type="text/javascript"></script>
+		<script src="js/main.js" type="text/javascript"></script>
+
 		<script language="javascript">
 			var pool = new Pool();
 			var forcaMin 		= document.getElementById('forcaMin');
@@ -133,9 +164,5 @@
 			}
 
 		</script>
-
-		<script src="js/angular.min.js" type="text/javascript"></script>
-		<script src="js/main.js" type="text/javascript"></script>
-		<script src="js/dices.js" type="text/javascript"></script>
 	</body>
 </html>
